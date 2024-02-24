@@ -1,13 +1,25 @@
 <template>
-  <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
+  <div id="app" class="app">
+    <HeaderNav/>
     <router-view/>
   </div>
 </template>
 
+<script>
+  import HeaderNav from "./components/Header.vue";
+  export default {
+    components: { HeaderNav },
+    data() {
+      
+    },
+};  
+</script>
+
+<style lang="sass" scoped>
+  .app
+    background-color: var(--color-background-primary);
+  
+</style>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -15,6 +27,7 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  
 }
 
 nav {
