@@ -1,20 +1,32 @@
 <template>
   <div class="hello">
-    <div class="container my-5">
-      <div class="row">
-        <div class="col-md-6"></div>
-        <div class="col-md-6"></div>
+    <div class="container-fluid my-5">
+      <div class="row my-5">
+        <div class="col-md-4 ">
+          <input type="text" v-model="filters.search" @keyup="Search()" class="form-control">
+        </div>
+        <div class="col-md-3 ml-auto">
+          <select class="form-control" v-model="filters.region" @change="Search" aria-label="Default select example">
+            <option selected value="Filter By Region">Filter By Region</option>
+            <option value="Africa">Africa</option>
+            <option value="Americas">America</option>
+            <option value="Asia">Asia</option>
+            <option value="Europe">Europe</option>
+            <option value="Oceania">Oceania</option>
+          </select>
+        </div>
       </div>
       <div class="row">
-        <div class="col-md-3 my-2 " v-for="(c,i) in countries" :key="i">
+        <div class="col-md-3 my-2 " v-for="(c, i) in countries" :key="i">
           <div class="card">
             <img class="card-img-top" :src="c.flags.png" :alt="c.flags.alt">
             <div class="card-body">
-              <h5 class="card-title text-left">{{c.name.common}}</h5>
+              <h5 class="card-title text-left">{{ c.name.common }}</h5>
               <p class="card-text text-left"><b>Population:</b> {{ c.population.toLocaleString() }}</p>
               <p class="card-text text-left"><b>Region:</b> {{ c.region }}</p>
               <p class="card-text text-left"><b>Capital: </b>
-                <span v-for="(cap ,i) in c.capital" :key="i">{{ cap }}</span> </p>
+                <span v-for="(cap, i) in c.capital" :key="i">{{ cap }}</span>
+              </p>
             </div>
           </div>
         </div>
@@ -27,24 +39,44 @@
 import axios from 'axios'
 export default {
   name: 'HelloWorld',
-  props: {
-    msg: String
-  },
-  data(){
+  data() {
     return {
-      countries:{}
+      countries: {},
+      filcountries: {},
+      filters: {
+        region: "Filter By Region"
+      }
     }
   },
 
-  methods:{
-    getCountry(){
+  methods: {
+    getCountry() {
       axios.get('https://restcountries.com/v3.1/all')
-      .then((res) => {
-        this.countries = res.data
-      })
+        .then((res) => {
+          this.countries = res.data
+          this.filcountries = res
+        })
+    },
+    Search() {
+      this.countries = this.filcountries.data.filter((country) => {
+        // return console.log(country);
+        if (this.filters.search && this.filters.region != "Filter By Region") {
+          return country.region == this.filters.region && country.name.common == this.filters.search;
+        }
+        if (this.filters.search) {
+          return country.name.common.toLowerCase() == this.filters.search.toLowerCase();
+        }
+        if (this.filters.region != "Filter By Region") {
+          return country.region == this.filters.region;
+        }
+        // If no filters are applied, return true to include all countries
+        return true;
+      });
+
+
     }
   },
-  mounted(){
+  mounted() {
     this.getCountry()
   }
 }
@@ -52,15 +84,17 @@ export default {
 
 
 <style scoped>
-  .card-img-top{
-    min-height: 150px;
-    max-height: 150px;
-  }
-  .card-title{
-    font-size: 15px;
-    font-weight: 900;
-  }
-  .card-text {
-    font-size: 15px;
-  }
+.card-img-top {
+  min-height: 150px;
+  max-height: 150px;
+}
+
+.card-title {
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.card-text {
+  font-size: 15px;
+}
 </style>

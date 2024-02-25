@@ -10,7 +10,7 @@
   export default {
     components: { HeaderNav },
     data() {
-      
+      return{}
     },
 };  
 </script>

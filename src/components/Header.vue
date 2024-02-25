@@ -40,17 +40,20 @@ export default {
 
 h1,h2,h3,h4,h5,h6,p
     color: var(--color-text-primary)
+.form-control
+    background: var(--color-background-secondary)
+.form-control::focus
+    background: var(--color-background-primary)
 .card
     background: var(--color-background-primary)
 .card-body
     background: var(--color-background-primary)
 .header
 	height: $header-height
-	background: var(--color-background-primary)
-	border-bottom: 1px solid var(--color-border)
+	background: var(--color-background-secondary)
 	display: flex
 	align-items: center
-	padding: 0 15px
+	padding: 35px 15px
 
 	.logo
 		font-size: 20px
@@ -96,7 +99,18 @@ h1,h2,h3,h4,h5,h6,p
 </style>
 
 <style>
-    .header{
-        box-shadow: 10px 15px white;
-    }
+.header{
+    box-shadow: 20px 20px 10px 10px var(--color-background-primary)
+}
+.form-control{
+    border: none;
+    color: var(--color-text-primary);
+    box-shadow: 20px 10px 10px 20px var(--color-background-primary);
+}
+.form-control:focus{
+    background: var(--color-background-secondary);
+    border:none;
+    color: var(--color-text-primary);
+    box-shadow: 20px 10px 10px 20px var(--color-background-primary);
+}
 </style>
