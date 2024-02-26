@@ -3,10 +3,10 @@
     <div class="container-fluid my-5">
       <div class="row my-5">
         <div class="col-md-4 ">
-          <input type="text" v-model="filters.search" @keyup="Search()" class="form-control">
+          <input type="text" v-model="filters.search" @keyup="Search()" placeholder="Search for a country ..." class="form-control py-4">
         </div>
-        <div class="col-md-3 ml-auto">
-          <select class="form-control" v-model="filters.region" @change="Search" aria-label="Default select example">
+        <div class="col-md-2 ml-auto">
+          <select class="form-control" style="height: 3rem;" v-model="filters.region" @change="Search" aria-label="Default select example">
             <option selected value="Filter By Region">Filter By Region</option>
             <option value="Africa">Africa</option>
             <option value="Americas">America</option>
@@ -64,12 +64,13 @@ export default {
           return country.region == this.filters.region && country.name.common == this.filters.search;
         }
         if (this.filters.search) {
+          console.log("Search term:", this.filters.search);
+          console.log("Country name:", country.name.common.toLowerCase());
           return country.name.common.toLowerCase() == this.filters.search.toLowerCase();
         }
         if (this.filters.region != "Filter By Region") {
           return country.region == this.filters.region;
         }
-        // If no filters are applied, return true to include all countries
         return true;
       });
 

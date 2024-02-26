@@ -1,12 +1,14 @@
 :root {
-	--color-background-primary:  #fafafa;
-	--color-background-secondary: #fff;
+	--color-background-primary:#fafafa;
+	--color-boxshadow-primary:rgba(100, 100, 111, 0.2);
+	--color-background-secondary: #ffffff;
 	--color-accent: #2196f3;
 	--color-border: #e0e0e0;
 	--color-text-primary: #212121;
 }
   
 [data-theme="dark"] {
+	--color-boxshadow-primary:rgba(30, 30, 30, 0.2);
 	--color-background-primary: #212d37;
 	--color-background-secondary: #2b3743;
 	--color-accent: #2196f3;

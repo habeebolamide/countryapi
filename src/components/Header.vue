@@ -99,18 +99,25 @@ h1,h2,h3,h4,h5,h6,p
 </style>
 
 <style>
-.header{
-    box-shadow: 20px 20px 10px 10px var(--color-background-primary)
+.header {
+    box-shadow: var(--color-boxshadow-primary) 0px 7px 29px 0px;
 }
-.form-control{
+
+.form-control {
     border: none;
     color: var(--color-text-primary);
-    box-shadow: 20px 10px 10px 20px var(--color-background-primary);
+    box-shadow: var(--color-boxshadow-primary) 0px 7px 29px 0px;
 }
-.form-control:focus{
+
+.form-control:focus {
     background: var(--color-background-secondary);
-    border:none;
+    border: none;
     color: var(--color-text-primary);
-    box-shadow: 20px 10px 10px 20px var(--color-background-primary);
+    box-shadow: var(--color-boxshadow-primary) 0px 7px 29px 0px;
+}
+
+.card {
+    border: none;
+    box-shadow: var(--color-boxshadow-primary) 0px 7px 29px 0px;
 }
 </style>
