@@ -18,7 +18,7 @@
       </div>
       <div class="row">
         <div class="col-md-3 my-2 " v-for="(c, i) in countries" :key="i">
-          <div class="card">
+          <div class="card" @click="Redirect(c)" style="cursor: pointer;">
             <img class="card-img-top" :src="c.flags.png" :alt="c.flags.alt">
             <div class="card-body">
               <h5 class="card-title text-left">{{ c.name.common }}</h5>
@@ -75,6 +75,10 @@ export default {
       });
 
 
+    },
+    Redirect(data){
+      localStorage.setItem('countryData', JSON.stringify(data));
+      this.$router.push({ name: 'CountryDetails'})
     }
   },
   mounted() {

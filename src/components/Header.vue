@@ -38,7 +38,7 @@ export default {
 <style lang="sass">
 @import "@/assets/sass/_variables.sass"
 
-h1,h2,h3,h4,h5,h6,p
+h1,h2,h3,h4,h5,h6,p,span
     color: var(--color-text-primary)
 .form-control
     background: var(--color-background-secondary)
